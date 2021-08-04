@@ -1,3 +1,6 @@
+% Author: Gao Chenzhong
+% Contact: 384118576@qq.com or 3120205425@bit.edu.cn
+
 function image = Readimage(file)
 if nargin == 0
     pathname = Getpath;

@@ -8,7 +8,7 @@ if nargin == 0
         pathname = [pathname,'\'];
     end
     [File, Path] = uigetfile([pathname,...
-        '*.jpg;*.png;*bmp;*.gif;*.tif;*.raw'], 'Pick an image');
+        '*.jpg;*.png;*bmp;*.gif;*.tif;*.tiff;*.raw;*.mat'], 'Pick an image');
     if ~strcmp(Getpath,pwd)
         rmpath(Getpath);
     end
@@ -23,7 +23,13 @@ else
     Path = file(1:end-i+1);
     File = file(end-i+2:end);
 end
-image = imread([Path, File]);
+str = strsplit(File,'.');
+ind = length(str);
+if strcmp(str{ind},'mat')
+    image = load([Path, File]);
+else
+    image = imread([Path, File]);
+end
 
 
 function p = Getpath

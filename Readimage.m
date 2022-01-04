@@ -26,7 +26,7 @@ end
 str = strsplit(File,'.');
 ind = length(str);
 if strcmp(str{ind},'mat')
-    image = load([Path, File]);
+    Image = cell2mat(struct2cell(load([Path, File])));
 else
     image = imread([Path, File]);
 end
